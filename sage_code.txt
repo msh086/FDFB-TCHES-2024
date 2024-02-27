@@ -1,0 +1,12 @@
+from estimator import *
+from estimator.lwe_parameters import *
+from estimator.nd import NoiseDistribution
+
+Xe = NoiseDistribution.DiscreteGaussian(3.19)
+Xs = NoiseDistribution.Uniform(-1, 1)
+
+N = 2**11
+Q = 2**54
+
+params = LWEParameters(N, Q, Xs, Xe)
+LWE.estimate(params, deny_list=['arora-gb'], jobs=4)
